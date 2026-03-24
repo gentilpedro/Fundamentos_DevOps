@@ -29,7 +29,7 @@ vagrant init
      config.vm.box = "generic/rocky9"
      config.vm.hostname = "control-node"
      config.vm.network "private_network", ip:"192.168.1.2"
-     config.vm.synced_folder "./", "vagrant/"
+     config.vm.synced_folder "./", "/vagrant"
      config.vm.provision "shell", path: "provision.sh"
      config.vm.provider "vmware_desktop" do |v|
        v.vmx["memsize"] = "1024"
