@@ -37,6 +37,7 @@ vagrant init
      end
    end
    ```
+
    3. Agora vamos criar o Provision.sh
       o provision faz o download do ansible e suas dependencias, e os ips das maquinas "escravas";
 
@@ -60,4 +61,15 @@ vagrant init
       ```
    4. agora vamos criar as vms definindo as portas de cada um em cada sub-past
    5. Depois dentro da vm mestre vamos configurar os gp, no caminho /etc/ansible/hosts
+
+      ```
+      sudo vi /etc/ansible/hosts
+
+      [app]
+       app-01
+      [db]
+       db-01
+      ```
    6. apos isso criar as sshs publicas ssh-keygen
+
+# Aula 02 (30/03/26)
