@@ -60,7 +60,18 @@ vagrant init
 
       ```
    4. agora vamos criar as vms definindo as portas de cada um em cada sub-past
-   5. Depois dentro da vm mestre vamos configurar os gp, no caminho /etc/ansible/hosts
+   5. Vamos inicializar a vm do Vagrant com o comando
+
+      ```shell
+      vagrant up
+      ```
+   6. Vamos apos terminar o comando vagrant up vamos entrar na maquina com o comando
+
+      ```shell
+      vagrant ssh
+      ```
+
+      7.Depois dentro da vm mestre vamos configurar os gp, no caminho /etc/ansible/hosts
 
       ```
       sudo vi /etc/ansible/hosts
@@ -70,6 +81,26 @@ vagrant init
       [db]
        db-01
       ```
-   6. apos isso criar as sshs publicas ssh-keygen
 
 # Aula 02 (30/03/26)
+
+1. apos criar a sua ssh com devese acessar a pasta e dar um cat na chave publica
+
+   ```shell
+   [vagrant@control-node ~]$ ssh-keygen
+   [vagrant@control-node ~]$ cd ~/.ssh/
+   [vagrant@control-node .ssh]$ ls
+   authorized_keys  id_rsa  id_rsa.pub
+   [vagrant@control-node .ssh]$ sudo cat id_rsa.pub
+   ```
+2. Apos criar a ssh publica no control-node vamos criar um arquivo provision.sh para o app-01 e para o db-01
+
+```shell
+#!usr/bin/env bash
+echo "Configurando Chaves
+
+sudo tee -a /home/vagrant/.ssh/authorized_keys>/dev/null <<EOT
+	A SUA CHAVE PRIMARIA GERADA NO CONTROL-NODE
+EOT
+
+```

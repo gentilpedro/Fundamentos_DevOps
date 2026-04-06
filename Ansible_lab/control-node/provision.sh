@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 echo "Instalando e configurando dependencias..."
+sudo dnf install nano
 echo "Instalando EPEL repository..."
 sudo dnf install -y epel-release
 

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+echo "Configurando a chave de acesso"
+
+sudo tee -a /home/vagrant/.ssh/authorized_key > /dev/null <<EOT
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDlGnLERUEx/CLXjtwEM9lNUxdPhU8olgtL+wjBaQIO3JKaU4Ir/4ruKgfr4VJKKPD9DfRkg4vZQ/vv/kYd7Tuu/YbHueO0B/Z8sHwLYBlBXu8zskbd5EV/1GX4FHn5vCSCdjr9RdbxWTKag2ImQT5dIZehh2uV3PTqkKY7AnF9CaPm/GoW2/39H+bS1ghCEcefajyJLolMCAiVIyhizsSdR328CwL076ncX4Tc/DXnB1m1K2ok1lMC8vmcqp+eylRnLD8b1nx4RXZ+V/Zy6KU7173sJzIDlKrWVevNUPP/7UPsOamVWDGDpzZgB0fjMH9eaDg8NAn6QL5zbSSQ6Blq5HHNhmVDvN1bEUbztnxcDHC5dJUXuijPjEHgJ9623IHvBwQCVXlalAAnwTR31DCabSEbNzVVfgCKv3NDG6hPWvb4gJg5gwN9aMYeN9H7N6OVKxFhXhnDHeqVU+LwjzDL3BR0HFnlSKZKZMJgAeWMtXEIIZAIPRLkXdXwfGw0eds= vagrant@control-node
+EOT
+
+systemctl enable firewalld
+systemctl start firewalld
+firewall-cmd --permanent --add-service=http
+firewall-cmd --reload
